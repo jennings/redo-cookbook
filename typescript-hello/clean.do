@@ -1,3 +1,5 @@
 # Clean TypeScript build artifacts
 exec >&2
-rm -f index.js index.js.map index.d.ts index.d.ts.map
+
+find . -not -path './node_modules/*' -and \( -name '*.js' -o -name '*.d.ts' -o -name '*.map' \) |
+xargs rm -f
