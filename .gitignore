@@ -29,5 +29,6 @@ Thumbs.db
 
 # Redo
 .redo/
-
+.do_built
+.do_built.dir/
 
