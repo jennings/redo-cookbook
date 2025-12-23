@@ -1,0 +1,34 @@
+# Build artifacts
+**/bin/
+**/obj/
+**/dist/
+**/build/
+*.dll
+*.exe
+*.pdb
+
+# Node.js
+node_modules/
+npm-debug.log*
+
+# TypeScript compiled outputs
+typescript-hello/*.js
+typescript-hello/*.js.map
+typescript-hello/*.d.ts
+typescript-hello/*.d.ts.map
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Redo
+.redo/
+.do_built
+.do_built.dir/
+
