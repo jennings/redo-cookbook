@@ -1,4 +1,3 @@
-#!/bin/sh
 # Build the C# Hello World application
-redo-ifchange HelloWorld.csproj Program.cs
+find . -name "*.cs" -o -name "*.csproj" | xargs redo-ifchange
 dotnet build -o bin

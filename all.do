@@ -1,13 +1,10 @@
-#!/bin/sh
 # Build all examples in the redo cookbook
 
 # Build C# console application
-cd csharp-hello && redo-ifchange all
+redo-ifchange csharp-hello/all
 
 # Build TypeScript console application
-cd ../typescript-hello && redo-ifchange all
+redo-ifchange typescript-hello/all
 
 # Build React Vite application
-cd ../react-vite-hello && redo-ifchange all
-
-echo "All examples built successfully!"
+redo-ifchange react-vite-hello/all

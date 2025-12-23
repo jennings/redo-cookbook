@@ -1,4 +1,3 @@
-#!/bin/sh
 # Build the TypeScript Hello World application
-redo-ifchange index.ts tsconfig.json
+find . -name "*.ts" -o -name "tsconfig.json" | xargs redo-ifchange
 npx tsc

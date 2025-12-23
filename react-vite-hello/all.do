@@ -1,4 +1,4 @@
-#!/bin/sh
 # Build the React Vite application
-redo-ifchange package.json package-lock.json src/App.jsx src/main.jsx
+find src -type f | xargs redo-ifchange
+redo-ifchange package.json package-lock.json
 npm run build
