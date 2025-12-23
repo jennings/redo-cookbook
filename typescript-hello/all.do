@@ -1,4 +1,5 @@
 # Build the TypeScript Hello World application
 exec >&2
 find . -name '*.ts' -o -name 'tsconfig.json' -print0 | xargs -0 -r redo-ifchange
-npx tsc
+redo-ifchange package.json
+npm run build
