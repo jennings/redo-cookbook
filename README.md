@@ -7,6 +7,7 @@ Example build scripts using the redo build system.
 This repository contains examples of using [redo](https://redo.readthedocs.io/) to build different types of applications:
 
 - **csharp-hello** - A C# console application ("Hello, World!")
+- **csharp-library** - A C# class library and console application demonstrating incremental builds with `redo-ifchange`
 - **typescript-hello** - A TypeScript console application ("Hello, World!")
 - **react-vite-hello** - A React application using Vite ("Hello, World!")
 
@@ -24,6 +25,7 @@ Or to build individual examples:
 
 ```bash
 cd csharp-hello && redo all
+cd csharp-library && redo all
 cd typescript-hello && redo all
 cd react-vite-hello && redo all
 ```
@@ -31,6 +33,6 @@ cd react-vite-hello && redo all
 ## Prerequisites
 
 - [redo](https://redo.readthedocs.io/) build system
-- For C# example: .NET SDK (10.0+)
+- For C# examples: .NET SDK (10.0+)
 - For TypeScript example: Node.js and npm
 - For React example: Node.js and npm
