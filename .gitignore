@@ -3,9 +3,11 @@
 **/obj/
 **/dist/
 **/build/
+**/packages/
 *.dll
 *.exe
 *.pdb
+*.nupkg
 
 # Node.js
 node_modules/
