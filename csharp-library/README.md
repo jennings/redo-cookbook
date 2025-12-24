@@ -9,19 +9,19 @@ This example demonstrates how to use redo to build a C# class library and a cons
   - `Greeter.cs` - A greeting helper class
   - `MyLibrary.csproj` - The library project file
 
-- **MyApp** - A console application that uses MyLibrary
+- **MyApp** - A console application that uses MyLibrary via ProjectReference
   - `Program.cs` - The main application entry point
-  - `MyApp.csproj` - The console app project file
+  - `MyApp.csproj` - The console app project file (references MyLibrary as a ProjectReference)
 
 ## Build Scripts
 
-- `library.do` - Builds the MyLibrary NuGet package
+- `library.do` - Builds the MyLibrary class library
   - Uses `redo-ifchange` to track all `.cs` and `.csproj` files
   - Only rebuilds if source files have changed
-  - Creates a NuGet package in the `packages` directory
 
 - `app.do` - Builds the MyApp console application
-  - Depends on the library package via `redo-ifchange ../library`
+  - Depends on the library via `redo-ifchange ../library`
+  - MyApp.csproj references MyLibrary as a ProjectReference
   - Only rebuilds if the library or app source files have changed
   - Outputs the built application to the `bin` directory
 

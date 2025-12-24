@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MyLibrary" Version="1.0.0" />
+    <ProjectReference Include="../MyLibrary/MyLibrary.csproj" />
   </ItemGroup>
 
 </Project>

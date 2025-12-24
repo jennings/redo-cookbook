@@ -4,11 +4,11 @@ exec >&2
 
 cd MyApp
 
-# Depend on the library package being built
+# Depend on the library being built
 redo-ifchange ../library
 
 # Track all source files and project file as dependencies
 find . -name '*.cs' -o -name '*.csproj' -print0 | xargs -0 -r redo-ifchange
 
-# Build the console app
+# Build the console app (this will also build the library if needed via ProjectReference)
 dotnet build -c Release -o ../bin
