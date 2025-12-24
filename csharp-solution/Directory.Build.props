@@ -1,0 +1,15 @@
+<Project>
+  <Target Name="WriteSourceFileList" AfterTargets="CoreCompile">
+    <ItemGroup>
+      <AllSourceFiles Include="@(Compile)" />
+      <AllSourceFiles Include="@(None)" />
+      <AllSourceFiles Include="@(Content)" />
+      <AllSourceFiles Include="@(EmbeddedResource)" />
+    </ItemGroup>
+    <WriteLinesToFile
+      File="$(IntermediateOutputPath)sourcefiles.deps"
+      Lines="@(AllSourceFiles)"
+      Overwrite="true"
+    />
+  </Target>
+</Project>

@@ -1,0 +1,1 @@
+export DOTNET_CONFIGURATION=Release
