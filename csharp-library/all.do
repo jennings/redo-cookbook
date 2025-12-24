@@ -2,8 +2,8 @@
 # Build everything in the csharp-library example
 exec >&2
 
-# First build the library package
-redo-ifchange library
+# First build the library
+redo-ifchange MyLibrary.build
 
 # Then build the app (which depends on the library)
-redo-ifchange app
+redo-ifchange MyApp.build

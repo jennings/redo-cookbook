@@ -15,30 +15,36 @@ This example demonstrates how to use redo to build a C# class library and a cons
 
 ## Build Scripts
 
-- `library.do` - Builds the MyLibrary class library
-  - Uses `redo-ifchange` to track all `.cs` and `.csproj` files
-  - Only rebuilds if source files have changed
+This example uses a **reusable** `default.build.do` script that can build any C# project:
 
-- `app.do` - Builds the MyApp console application
-  - Depends on the library via `redo-ifchange ../library`
-  - MyApp.csproj references MyLibrary as a ProjectReference
-  - Only rebuilds if the library or app source files have changed
-  - Outputs the built application to the `bin` directory
+- `default.build.do` - A generic build script for C# projects
+  - Automatically detects project dependencies via ProjectReferences
+  - Tracks all `.cs` and `.csproj` files with `redo-ifchange`
+  - Determines if a project is a library or executable and builds accordingly
+  - Can be reused for any number of C# projects without modification
 
-- `all.do` - Builds both the library and the application
+- `all.do` - Builds both the library and the application using the reusable script
 - `clean.do` - Removes all build artifacts
+
+### How the Reusable Build Script Works
+
+The `default.build.do` script matches any target ending in `.build` (e.g., `MyLibrary.build`, `MyApp.build`). This means:
+- You can add more C# projects without writing new `.do` files
+- Each project is built using the same script
+- Dependencies are automatically tracked via ProjectReferences in the `.csproj` files
 
 ## How redo-ifchange Avoids Rebuilds
 
-The key to avoiding unnecessary rebuilds is the `redo-ifchange` command:
+The key to avoiding unnecessary rebuilds is the `redo-ifchange` command in `default.build.do`:
 
-1. **In library.do**: `find . -name '*.cs' -o -name '*.csproj' -print0 | xargs -0 -r redo-ifchange`
+1. **Tracking source files**: `find . -name '*.cs' -o -name '*.csproj' -print0 | xargs -0 -r redo-ifchange`
    - This tells redo to track all C# source files and project files
-   - The library will only be rebuilt if any of these files change
+   - A project will only be rebuilt if any of these files change
 
-2. **In app.do**: `redo-ifchange ../library`
-   - This tells redo that the app depends on the library being built
-   - The app will only be rebuilt if the library is rebuilt or if the app's own source files change
+2. **Automatic dependency tracking**: The script parses ProjectReferences from `.csproj` files
+   - When building MyApp, it automatically detects the dependency on MyLibrary
+   - It calls `redo-ifchange MyLibrary.build` before building MyApp
+   - This ensures the library is built first and rebuilds MyApp only when the library changes
 
 ## Building
 
@@ -51,13 +57,13 @@ redo all
 To build just the library:
 
 ```bash
-redo library
+redo MyLibrary.build
 ```
 
 To build just the app (this will build the library first if needed):
 
 ```bash
-redo app
+redo MyApp.build
 ```
 
 ## Testing Incremental Builds
