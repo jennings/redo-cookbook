@@ -31,4 +31,5 @@ Thumbs.db
 .redo/
 .do_built
 .do_built.dir/
-
+*.did
+*.tmp
