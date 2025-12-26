@@ -6,7 +6,7 @@ Example build scripts using the redo build system.
 
 This repository contains examples of using [redo](https://redo.readthedocs.io/) to build different types of applications:
 
-- **csharp-hello** - A C# console application ("Hello, World!")
+- **csharp-single-project** - A single C# console application
 - **typescript-hello** - A TypeScript console application ("Hello, World!")
 - **react-vite-hello** - A React application using Vite ("Hello, World!")
 
@@ -23,7 +23,7 @@ redo all
 Or to build individual examples:
 
 ```bash
-cd csharp-hello && redo all
+redo csharp-single-project/all
 cd typescript-hello && redo all
 cd react-vite-hello && redo all
 ```
