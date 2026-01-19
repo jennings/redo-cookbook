@@ -7,7 +7,7 @@ redo-ifchange global.json \
     Directory.Build.props \
     build/dotnet \
     build/add_csharp_dependencies.sh \
-    "$2.csharp"
+    "$2.csproj"
 
 if [ -f "Directory.Packages.props" ]; then
     redo-ifchange Directory.Packages.props

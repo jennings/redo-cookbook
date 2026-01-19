@@ -2,8 +2,6 @@
 **/bin/
 **/obj/
 **/dist/
-**/build/
-**/packages/
 *.dll
 *.exe
 *.pdb
