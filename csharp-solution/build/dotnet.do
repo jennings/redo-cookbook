@@ -6,8 +6,10 @@
 redo-ifchange build_vars.sh
 . ./build_vars.sh
 
-echo >$3 \
-'DOTNET_CONFIGURATION='$DOTNET_CONFIGURATION'
+echo >$3 '#!/bin/bash
+set -euo pipefail
+
+DOTNET_CONFIGURATION='$DOTNET_CONFIGURATION'
 case $1 in
 build)
 	shift

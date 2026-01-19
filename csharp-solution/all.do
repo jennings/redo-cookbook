@@ -1,1 +1,1 @@
-redo-ifchange MyApp/MyApp.csproj.build
+redo-ifchange build
