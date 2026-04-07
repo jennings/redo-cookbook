@@ -10,14 +10,15 @@ echo >$3 '#!/bin/bash
 set -euo pipefail
 
 DOTNET_CONFIGURATION='$DOTNET_CONFIGURATION'
+DOTNETARGS="--disable-build-servers -c $DOTNET_CONFIGURATION"
 case $1 in
 build)
 	shift
-	dotnet --disable-build-servers build -c $DOTNET_CONFIGURATION "$@"
+	dotnet $DOTNETARGS build "$@"
 	;;
 publish)
 	shift
-	dotnet --disable-build-servers publish -c $DOTNET_CONFIGURATION "$@"
+	dotnet $DOTNETARGS publish "$@"
 	;;
 *)
 	dotnet --disable-build-servers "$@"
