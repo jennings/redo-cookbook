@@ -13,14 +13,14 @@ DOTNET_CONFIGURATION='$DOTNET_CONFIGURATION'
 case $1 in
 build)
 	shift
-	dotnet build -c $DOTNET_CONFIGURATION "$@"
+	dotnet --disable-build-servers build -c $DOTNET_CONFIGURATION "$@"
 	;;
 publish)
 	shift
-	dotnet publish -c $DOTNET_CONFIGURATION "$@"
+	dotnet --disable-build-servers publish -c $DOTNET_CONFIGURATION "$@"
 	;;
 *)
-	dotnet "$@"
+	dotnet --disable-build-servers "$@"
 	;;
 esac'
 
