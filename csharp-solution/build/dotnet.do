@@ -14,11 +14,11 @@ DOTNETARGS="--disable-build-servers -c $DOTNET_CONFIGURATION"
 case $1 in
 build)
 	shift
-	dotnet $DOTNETARGS build "$@"
+	dotnet build $DOTNETARGS "$@"
 	;;
 publish)
 	shift
-	dotnet $DOTNETARGS publish "$@"
+	dotnet publish $DOTNETARGS "$@"
 	;;
 *)
 	dotnet --disable-build-servers "$@"
