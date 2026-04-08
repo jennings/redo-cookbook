@@ -12,16 +12,12 @@ set -euo pipefail
 DOTNET_CONFIGURATION='$DOTNET_CONFIGURATION'
 DOTNETARGS="--disable-build-servers -c $DOTNET_CONFIGURATION"
 case $1 in
-build)
+build|publish|pack)
 	shift
 	dotnet build $DOTNETARGS "$@"
 	;;
-publish)
-	shift
-	dotnet publish $DOTNETARGS "$@"
-	;;
 *)
-	dotnet --disable-build-servers "$@"
+	dotnet "$@" --disable-build-servers 
 	;;
 esac'
 
